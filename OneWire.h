@@ -12,9 +12,9 @@
 
 class OneWire {
 public:
-	OneWire();
+	OneWire( uint8_t *_regIN, uint8_t *_regOUT, uint8_t *_regREN, uint8_t *_regDIR, uint8_t _bit);
 	virtual ~OneWire();
-	void begin( uint8_t *_regIN, uint8_t *_regOUT, uint8_t *_regREN, uint8_t *_regDIR, uint8_t _bit);
+	void begin();
 	bool reset();
 	bool readBit();
 	void writeBit( bool state);

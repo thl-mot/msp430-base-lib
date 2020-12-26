@@ -25,19 +25,19 @@
 #define SAMPLE_AFTER_READ_US (14-READ_US)
 #define RECOVER_AFTER_READ (SLOT-READ_US-SAMPLE_AFTER_READ_US+10)
 
-OneWire::OneWire() {
+OneWire::OneWire( uint8_t *_regIN, uint8_t *_regOUT, uint8_t *_regREN, uint8_t *_regDIR, uint8_t _bit) {
+	regIN= _regIN;
+	regOUT= _regOUT;
+	regREN= _regREN;
+	regDIR= _regDIR;
+	bit= 1 << _bit;
 }
 
 OneWire::~OneWire() {
 }
 
 
-void OneWire::begin( uint8_t *_regIN, uint8_t *_regOUT, uint8_t *_regREN, uint8_t *_regDIR, uint8_t _bit) {
-	regIN= _regIN;
-	regOUT= _regOUT;
-	regREN= _regREN;
-	regDIR= _regDIR;
-	bit= 1 << _bit;
+void OneWire::begin() {
 }
 
 bool OneWire::reset() {
