@@ -14,7 +14,7 @@ class Bme280 {
 public:
 	Bme280();
 	virtual ~Bme280();
-	void begin();
+	bool begin();
 	void measure();
 	float getHumidity();
 	float getTemperature();
@@ -48,6 +48,11 @@ private:
     bool measureTemperature();
     bool measureHumidity();
     bool measurePreassure();
+
+    bool burstReadout();
+    bool calculateTemperature( uint8_t msb, uint8_t lsb, uint8_t xlsb);
+    bool calculateHumidity(uint8_t msb, uint8_t lsb);
+    bool calculatePreassure(uint8_t msb, uint8_t lsb, uint8_t xlsb);
 };
 
 #endif /* BME280_H_ */

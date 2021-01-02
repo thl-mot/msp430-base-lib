@@ -8,24 +8,14 @@
 #ifndef ONEWIRE_H_
 #define ONEWIRE_H_
 
+#include <msp430.h>
 #include <inttypes.h>
 
-class OneWire {
-public:
-	OneWire( uint8_t *_regIN, uint8_t *_regOUT, uint8_t *_regREN, uint8_t *_regDIR, uint8_t _bit);
-	virtual ~OneWire();
-	void begin();
-	bool reset();
-	bool readBit();
-	void writeBit( bool state);
-	void writeByte( uint8_t data);
-	uint8_t readByte();
-private:
-	uint8_t *regIN;
-	uint8_t *regOUT;
-	uint8_t *regREN;
-	uint8_t *regDIR;
-	uint8_t bit;
-};
+void oneWire_reset(uint8_t bit);
+void oneWire_writeBit(uint8_t bit, bool state);
+bool oneWire_readBit(uint8_t bit);
+
+void oneWire_writeByte(uint8_t bit, uint8_t data);
+uint8_t oneWire_readByte(uint8_t bit);
 
 #endif /* ONEWIRE_H_ */
